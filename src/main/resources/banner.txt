@@ -1,0 +1,7 @@
+${AnsiColor.BRIGHT_GREEN}
++-+-+-+-+-+-+-+
+|c|o|m|m|o|n|s|
++-+-+-+-+-+-+-+
+${AnsiColor.BRIGHT_RED}
+Application Version: ${application.version}${application.formatted-version}
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}

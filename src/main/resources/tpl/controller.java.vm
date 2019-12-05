@@ -1,0 +1,39 @@
+package ${package.Controller};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import ${package.Service}.${entity}Service;
+import org.springframework.web.bind.annotation.RestController;
+
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+#if(${providerClassPackage})
+import ${providerClassPackage};
+#end
+
+/**
+ * ${table.comment}  前端控制器
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@RestController
+@RequestMapping("/${table.entityPath}")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+	@Autowired
+	${entity}Service ${entity.toLowerCase()}Service;
+
+	@GetMapping(value = "/{id}")
+	public Result get(@PathVariable("id") Long id) {
+        return Result.success(${entity.toLowerCase()}Service.getById(id));
+	}
+}
